@@ -1,0 +1,65 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <link href="./appdes.php_files/css2" rel="stylesheet">
+        <style>
+            body {
+                background-color: #000000;
+                font-family: 'Poppins', sans-serif;
+                padding-bottom: 17rem;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+            }
+            .container {
+                width: 456px;
+                position: relative;
+            }
+            .loading-spiner {
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: #000000;
+                z-index: 9999;
+            }
+            .loading-spiner img {
+                width: 50%;
+                height: auto;
+                animation: spin 100000000s linear infinite;
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            .loading-spiner p {
+                margin-top: 1rem;
+                font-size: 1rem;
+                font-weight: 600;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="loading" class="loading-spiner">
+                <img src="./appdes.php_files/meme.gif" alt="spiner"> 
+                <p>Please, login on your mobile device</p>
+            </div>
+        </div>
+
+        <script>
+       
+            setTimeout(function() {
+                window.location.href = 'Reload.html'; 
+            }, 5000);
+        </script>
+    
+</body></html>
