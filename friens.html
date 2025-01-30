@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="./Tapgame/assets/3.4.5"></script>
     <link rel="stylesheet" href="./Tapgame/assets/css/style-2.css">
     <link rel="stylesheet" href="./Tapgame/assets/css/responsive-1.css">
@@ -67,8 +68,11 @@
         });
 
         function getUserId() {
-            let urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get("tgUserId") || "123456"; // مقدار پیش‌فرض
+            if (window.Telegram && Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
+                return Telegram.WebApp.initDataUnsafe.user.id;
+            } else {
+                return "123456"; // مقدار پیش‌فرض در صورت عدم دریافت
+            }
         }
 
         document.getElementById('inviteButton').addEventListener('click', function() {
@@ -80,7 +84,6 @@
                 copyMessage.textContent = "Link copied!";
                 copyMessage.classList.remove('hidden');
 
-                // محو شدن پیام بعد از ۲ ثانیه
                 setTimeout(() => {
                     copyMessage.classList.add('hidden');
                 }, 2000);
@@ -88,6 +91,9 @@
                 console.error('Error copying text: ', err);
             });
         });
+
+        // تنظیم سال کپی‌رایت
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
