@@ -4,6 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CONNECT WALLET</title>
+    <script>
+      // جلوگیری از کلیک راست
+      document.addEventListener("contextmenu", event => event.preventDefault());
+  
+      // جلوگیری از مشاهده سورس کد و ابزارهای توسعه‌دهنده
+      document.addEventListener("keydown", function(event) {
+          if (
+              (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S"))  ||
+              (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "i"))  ||
+              (event.key === "F12")
+          ) {
+              event.preventDefault();
+          }
+      });
+  
+      // تشخیص اجرای DevTools و خالی کردن صفحه در صورت باز شدن
+      setInterval(function() {
+          let before = new Date().getTime();
+          // یک روش برای شناسایی DevTools بدون ایجاد کندی
+          console.log("Checking DevTools...");
+          let after = new Date().getTime();
+          if (after - before > 100) {
+              document.body.innerHTML = "";
+          }
+      }, 1000);
+  </script>
   </head>
 <style>
   body{
