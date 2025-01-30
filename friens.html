@@ -16,6 +16,9 @@
         .full-height {
             height: 108%;
         }
+        #copyMessage {
+            display: none;
+        }
     </style>
 </head>
 <body class="boost">
@@ -79,12 +82,16 @@
 
         document.getElementById('inviteButton').addEventListener('click', function() {
             let userId = getUserId();
-            let referralLink = "https://t.me/Darkcoiin_bot?start=ref" + userId;
+            let referralLink = https://t.me/Darkcoiin_bot?start=ref${userId};
+
+            // کپی لینک به کلیپ بورد
             navigator.clipboard.writeText(referralLink).then(function() {
+                // نمایش پیغام کپی موفق
                 let copyMessage = document.getElementById('copyMessage');
                 copyMessage.textContent = "Link copied!";
                 copyMessage.classList.remove('hidden');
 
+                // محو شدن پیغام بعد از ۲ ثانیه
                 setTimeout(() => {
                     copyMessage.classList.add('hidden');
                 }, 2000);
