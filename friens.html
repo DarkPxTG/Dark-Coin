@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- اضافه کردن اسکریپت تلگرام -->
+    <!-- اسکریپت تلگرام -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="./Tapgame/assets/3.4.5"></script>
     <link rel="stylesheet" href="./Tapgame/assets/css/style-2.css">
@@ -71,18 +71,18 @@
             }
         });
 
+        // دریافت آیدی کاربر از تلگرام
         function getUserId() {
-            // دریافت آیدی کاربر از تلگرام
-            if (window.Telegram && Telegram.WebApp.initDataUnsafe && Telegram.WebApp.initDataUnsafe.user) {
-                return Telegram.WebApp.initDataUnsafe.user.id;
-            } else {
-                return "123456"; // مقدار پیش‌فرض در صورت عدم دریافت
+            // چک کردن داده‌های initDataUnsafe که حاوی اطلاعات کاربر است
+            if (window.Telegram && window.Telegram.WebApp.initDataUnsafe && window.Telegram.WebApp.initDataUnsafe.user) {
+                return window.Telegram.WebApp.initDataUnsafe.user.id;
             }
+            return "123456"; // مقدار پیش‌فرض در صورت عدم دسترسی به اطلاعات کاربر
         }
 
         document.getElementById('inviteButton').addEventListener('click', function() {
-            let userId = getUserId();
-            let referralLink = https://t.me/Darkcoiin_bot?start=ref${userId};
+            let userId = getUserId(); // دریافت آیدی کاربر
+            let referralLink = https://t.me/Darkcoiin_bot?start=ref${userId}; // ساخت لینک رفرال
 
             // کپی لینک به کلیپ بورد
             navigator.clipboard.writeText(referralLink).then(function() {
