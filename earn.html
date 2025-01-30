@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dark Coin Task</title>
     <link rel="stylesheet" href="./- ThunderCoinCore_files/style.css">
     <link rel="stylesheet" href="./- ThunderCoinCore_files/responsive.css">
     <meta name="theme-color" content="#f19e36">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+    <script>
+        // جلوگیری از کلیک راست
+        document.addEventListener("contextmenu", event => event.preventDefault());
+    
+        // جلوگیری از مشاهده سورس کد و ابزارهای توسعه‌دهنده
+        document.addEventListener("keydown", function(event) {
+            if (
+                (event.ctrlKey && (event.key === "u" || event.key === "U" || event.key === "s" || event.key === "S"))  ||
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "i"))  ||
+                (event.key === "F12")
+            ) {
+                event.preventDefault();
+            }
+        });
+    
+        // تشخیص اجرای DevTools و خالی کردن صفحه در صورت باز شدن
+        setInterval(function() {
+            let before = new Date().getTime();
+            // یک روش برای شناسایی DevTools بدون ایجاد کندی
+            console.log("Checking DevTools...");
+            let after = new Date().getTime();
+            if (after - before > 100) {
+                document.body.innerHTML = "";
+            }
+        }, 1000);
+    </script>
 </head>
-            
 
 <body class="earn">
 
@@ -33,13 +58,11 @@
                 <span>Task List</span>
             </div>
 
-
             <div class="frens-list-box">
-                <a class="frens-data " href="https://t.me/Rabbit_coinR" style="color:white;" id="youtube" onclick="youtube()">
+                <!-- لینک به کانال تلگرام -->
+                <a class="frens-data" href="https://t.me/Rabbit_coinR" style="color:white;" id="youtube" onclick="addCoins(25000); this.style.display='none';">
                     <div class="frens-profile">
-
-                        <span>Follow TGE Chanell</span>
-
+                        <span>Follow TGE Channel</span>
                     </div>
                     <div class="frens-data-count">
                         <span>+25k</span>
@@ -48,11 +71,11 @@
                         </svg>
                     </div>
                 </a>
-                <a class="frens-data " href="https://instagram.com/elon_musk" style="color:white;" id="insta" onclick="insta()">
+
+                <!-- دیگر لینک‌های کانال -->
+                <a class="frens-data" href="https://instagram.com/elon_musk" style="color:white;" id="insta" onclick="addCoins(7000); this.style.display='none';">
                     <div class="frens-profile">
-
                         <span>Follow X Elon Musk</span>
-
                     </div>
                     <div class="frens-data-count">
                         <span>+7k</span>
@@ -61,68 +84,60 @@
                         </svg>
                     </div>
                 </a>
-            </a>
-            <a class="frens-data " href="https://t.me/qpcod" style="color:white;" id="insta" onclick="insta()">
-                <div class="frens-profile">
 
-                    <span>Follow QP QOD Chanell</span>
+                <!-- لینک به کانال سوم -->
+                <a class="frens-data" href="https://t.me/qpcod" style="color:white;" id="qpChannel" onclick="addCoins(5000); this.style.display='none';">
+                    <div class="frens-profile">
+                        <span>Follow QP QOD Channel</span>
+                    </div>
+                    <div class="frens-data-count">
+                        <span>+5k</span>
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </a>
 
-                </div>
-                <div class="frens-data-count">
-                    <span>+5k</span>
-                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
+                <!-- لینک به کانال چهارم -->
+                <a class="frens-data" href="https://t.me/WhAlE_ChAnEl" style="color:white;" id="whaleChannel" onclick="addCoins(10000); this.style.display='none';">
+                    <div class="frens-profile">
+                        <span>Follow Whale Channel</span>
+                    </div>
+                    <div class="frens-data-count">
+                        <span>+10k</span>
+                        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </div>
+                </a>
 
-            </a>
-            <a class="frens-data " href="https://t.me/WhAlE_ChAnEl" style="color:white;" id="insta" onclick="insta()">
-                <div class="frens-profile">
-
-                    <span>Follow Whall Chanell</span>
-
-                </div>
-                <div class="frens-data-count">
-                    <span>+10k</span>
-                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 5L14.15 10C14.4237 10.2563 14.6419 10.5659 14.791 10.9099C14.9402 11.2539 15.0171 11.625 15.0171 12C15.0171 12.375 14.9402 12.7458 14.791 13.0898C14.6419 13.4339 14.4237 13.7437 14.15 14L9 19" stroke="#ffffff" opacity="0.4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                </div>
-
+            </div>
         </div>
     </div>
-</div>
+    <div class="footer" style="text-align: center; margin-top: 20px; background-color: #0bfada #ffffff;">
+        <p>&copy; <span id="year"></span> All rights reserved</p>
+    </div>
 
-    <script src="./- ThunderCoinCore_files/charge.js.download"></script>
     <script>
-        function joincomunity() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                let control = document.getElementById('communityjoined');
-                control.style.opacity = 0.2;
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    if (xhr.responseText == "OK") {
-                        control.style.display = 'none';
-                    }
-                    else {
-                        control.style.opacity = 1;
-                    }
-                }
-            }
-            xhr.open('GET', '/joincomunity?Token=b29b8c2e-d58c-4d07-af73-6a2ea164673b', true);
-            xhr.send(null);
-        }
+        document.getElementById("year").textContent = new Date().getFullYear();
     </script>
 
+    <script>
+        // تابع اضافه کردن سکه به حساب کاربر
+        function addCoins(coinsToAdd) {
+            let currentCoins = localStorage.getItem('coins');
+            if (currentCoins === null) {
+                currentCoins = 0;
+            } else {
+                currentCoins = parseInt(currentCoins);
+            }
 
+            // اضافه کردن سکه‌ها
+            currentCoins += coinsToAdd;
 
-            <script>
-    document.addEventListener('touchstart', function (event) {
-        if (event.touches.length > 1) {
-            event.preventDefault();
+            // ذخیره سکه‌های جدید در localStorage
+            localStorage.setItem('coins', currentCoins);
+
+            // ریدایرکت کردن کاربر به صفحه Reload.html
+            window.location.href = 'Reload.html';
         }
-    }, { passive: false });
-
-            </script>
-
-</body></html>
